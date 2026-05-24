@@ -154,6 +154,11 @@ a{text-decoration:none;color:inherit}
   /* Chips */
   .chip{font-size:9px;padding:3px 8px}
 }
+/* Itinerary done checkboxes */
+.it-chk{width:22px;height:22px;border-radius:5px;border:2px solid #D0C8C0;display:flex;align-items:center;justify-content:center;flex-shrink:0;cursor:pointer;background:#fff;transition:all .15s;font-size:11px;font-weight:800;color:#fff;margin-top:2px;-webkit-tap-highlight-color:transparent}
+.it-chk.done{background:#3B6640;border-color:#3B6640}
+.it.checked .itx{opacity:.4;text-decoration:line-through}
+.it-res{font-size:10px;color:#1E3558;background:#EEF3FA;border:.5px solid #B8CCE8;border-radius:6px;padding:2px 8px;margin:3px 0 1px;display:inline-block;line-height:1.4}
 /* ─── Checklist Préparation ─── */
 .cl-cat{background:#fff;border-radius:14px;border:.5px solid #E4D9C4;margin-bottom:12px;overflow:hidden}
 .cl-cat-head{padding:14px 16px;display:flex;align-items:center;gap:10px;cursor:pointer;user-select:none}
@@ -591,7 +596,7 @@ var DAYS=[
     {h:"08h30",t:"Dépôt valises · fraîchir · PAS de sieste — on tient le coup !",c:"ho"}
   ]},
   {lbl:"🍵 Matcha du matin",items:[
-    {h:"09h00",t:"🍵 Saryo Tsujiri Shinjuku — matcha latte et wagashi · parfait pour se réveiller",c:"matcha",bgt:1200,gm:"https://www.google.com/maps/search/Saryo+Tsujiri+Shinjuku",ap:"https://maps.apple.com/?q=Saryo+Tsujiri+Shinjuku"}
+    {h:"09h00",t:"🍵 Nana's Green Tea Shinjuku — matcha latte et douceurs japonaises · idéal pour bien commencer · à 5 min de l'hôtel",c:"matcha",bgt:1200,gm:"https://www.google.com/maps/search/Nana's+Green+Tea+Shinjuku",ap:"https://maps.apple.com/?q=Nana's+Green+Tea+Shinjuku",site:"https://www.nanasgreentea.com/"}
   ]},
   {lbl:"☀️ Midi",items:[
     {h:"10h00",t:"🥢 Menya Kokoro Mazesoba — ramen sec sans bouillon · idéal quand on est fatigué",c:"fo",bgt:1500,gm:"https://www.google.com/maps/dir/Hyatt+Regency+Tokyo/Menya+Kokoro+Ochanomizu+Tokyo",ap:"https://maps.apple.com/?saddr=Hyatt+Regency+Tokyo&daddr=Menya+Kokoro+Ochanomizu"}
@@ -601,41 +606,45 @@ var DAYS=[
     {h:"13h00",t:"Shinjuku Gyoen — jardin japonais · flânerie · premier contact (¥500)",c:"ac",bgt:500,gm:"https://www.google.com/maps/dir/Shinjuku+Station/Shinjuku+Gyoen",ap:"https://maps.apple.com/?saddr=Shinjuku+Station&daddr=Shinjuku+Gyoen",site:"https://www.shinjukugyoen.go.jp/"},
     {h:"16h00",t:"Observatoire Bâtiment Métropolitain — vue Mt Fuji coucher de soleil — GRATUIT",c:"ac",gm:"https://www.google.com/maps/dir/Shinjuku+Gyoen/Tokyo+Metropolitan+Government+Building",ap:"https://maps.apple.com/?saddr=Shinjuku+Gyoen&daddr=Tokyo+Metropolitan+Government+Building"}
   ]},
+  {lbl:"🍵 Matcha du soir",items:[
+    {h:"17h30",t:"🍵 Matcha Shinjuku — dégustation de fin de journée · wagashi · moment calme après l'observatoire",c:"matcha",bgt:1000,gm:"https://www.google.com/maps/search/matcha+cafe+Shinjuku",ap:"https://maps.apple.com/?q=Matcha+Cafe+Shinjuku"}
+  ]},
   {lbl:"🌙 Soir",items:[
     {h:"18h30",t:"🍽 Sougo Roppongi — shojin ryori végétarien élégant · proche hôtel",c:"fo",bgt:9000,gm:"https://www.google.com/maps/dir/Tokyo+Metropolitan+Government+Building/Sougo+restaurant+Roppongi",ap:"https://maps.apple.com/?saddr=Tokyo+Metropolitan+Government+Building&daddr=Sougo+Roppongi",site:"https://tablecheck.com/en/shops/sougo/reserve"}
   ]}
 ],notes:[{t:"Installer Suica sur iPhone via Apple Pay dès l'aéroport",w:false}]},
 
-{n:2,d:"Mar 11/08",v:"Tokyo",city:"tokyo",type:"normal",title:"Nezu Shrine · Asakusa · Akihabara · Restaurant Tokyo Tower",hotel:"Hyatt Regency Nishi-Shinjuku",blocks:[
-  {lbl:"🌅 Matin — Nezu Shrine (08h00)",items:[
-    {h:"08h00",t:"🌸 Nezu Jinja — arriver vers 8h · torii rouges · mini Fushimi Inari tokyoïte · quasi désert",c:"ac",gm:"https://www.google.com/maps/dir/Hyatt+Regency+Tokyo/Nezu+Shrine+Tokyo",ap:"https://maps.apple.com/?saddr=Hyatt+Regency+Tokyo&daddr=Nezu+Shrine+Tokyo",site:"https://www.nedujinja.or.jp/"}
+{n:2,d:"Mar 11/08",v:"Tokyo",city:"tokyo",type:"normal",title:"Nezu Shrine · Zoo Ueno · Asakusa · Skytree · Akihabara · Tokyo Tower",hotel:"Hyatt Regency Nishi-Shinjuku",blocks:[
+  {lbl:"🌅 Matin — Nezu Shrine + Zoo Ueno",items:[
+    {h:"08h00",t:"🌸 Nezu Jinja — arriver vers 8h · torii rouges · mini Fushimi Inari tokyoïte · quasi désert",c:"ac",gm:"https://www.google.com/maps/dir/Hyatt+Regency+Tokyo/Nezu+Shrine+Tokyo",ap:"https://maps.apple.com/?saddr=Hyatt+Regency+Tokyo&daddr=Nezu+Shrine+Tokyo",site:"https://www.nedujinja.or.jp/"},
+    {h:"09h00",t:"🐼 Zoo de Ueno — 15 min à pied de Nezu Shrine · pandas · éléphants · girafes · ¥600 · ferme 17h",c:"ac",bgt:1200,gm:"https://www.google.com/maps/dir/Nezu+Shrine+Tokyo/Ueno+Zoo+Tokyo",ap:"https://maps.apple.com/?saddr=Nezu+Shrine+Tokyo&daddr=Ueno+Zoo+Tokyo"}
   ]},
   {lbl:"🥐 Petit-déjeuner — Pelican Café",items:[
-    {h:"09h00",t:"🥐 Pelican Café Asakusa — boulangerie iconique depuis 1942 · pain japonais moelleux",c:"fo",bgt:1500,gm:"https://www.google.com/maps/dir/Nezu+Shrine+Tokyo/Pelican+Cafe+Asakusa",ap:"https://maps.apple.com/?saddr=Nezu+Shrine+Tokyo&daddr=Pelican+Cafe+Asakusa"}
+    {h:"10h30",t:"🥐 Pelican Café Asakusa — boulangerie iconique depuis 1942 · pain japonais moelleux",c:"fo",bgt:1500,gm:"https://www.google.com/maps/dir/Ueno+Zoo+Tokyo/Pelican+Cafe+Asakusa",ap:"https://maps.apple.com/?saddr=Ueno+Zoo+Tokyo&daddr=Pelican+Cafe+Asakusa"}
   ]},
   {lbl:"🍵 Matcha du jour",items:[
-    {h:"10h00",t:"🍵 Nakamura Tokichi Asakusa — depuis 1854 · matcha d'exception",c:"matcha",bgt:1000,gm:"https://www.google.com/maps/search/Nakamura+Tokichi+Asakusa",ap:"https://maps.apple.com/?q=Nakamura+Tokichi+Asakusa"}
+    {h:"11h15",t:"🍵 Nakamura Tokichi Asakusa — depuis 1854 · matcha d'exception",c:"matcha",bgt:1000,gm:"https://www.google.com/maps/search/Nakamura+Tokichi+Asakusa",ap:"https://maps.apple.com/?q=Nakamura+Tokichi+Asakusa"}
   ]},
-  {lbl:"☀️ Matin — Asakusa",items:[
-    {h:"10h30",t:"Senso-ji Temple · Kaminarimon · Nakamise-dori — GRATUIT",c:"ac",gm:"https://www.google.com/maps/dir/Senso-ji+Temple+Asakusa/Tokyo+Skytree",ap:"https://maps.apple.com/?saddr=Senso-ji+Temple&daddr=Tokyo+Skytree",site:"https://www.senso-ji.jp/"},
-    {h:"12h00",t:"Tokyo Skytree — vue panoramique 350m ou 450m (¥2,700)",c:"ac",bgt:2700,gm:"https://www.google.com/maps/dir/Senso-ji+Temple/Tokyo+Skytree",ap:"https://maps.apple.com/?saddr=Senso-ji+Temple&daddr=Tokyo+Skytree",site:"https://www.tokyo-skytree.jp/en/ticket/"},
-    {h:"13h30",t:"🍡 Street food Nakamise-dori · ningyo-yaki · melonpan · brochettes",c:"fo",bgt:800}
+  {lbl:"☀️ Midi — Asakusa + Skytree",items:[
+    {h:"11h45",t:"Senso-ji Temple · Kaminarimon · Nakamise-dori — GRATUIT",c:"ac",gm:"https://www.google.com/maps/dir/Senso-ji+Temple+Asakusa/Tokyo+Skytree",ap:"https://maps.apple.com/?saddr=Senso-ji+Temple&daddr=Tokyo+Skytree",site:"https://www.senso-ji.jp/"},
+    {h:"12h30",t:"Tokyo Skytree — vue panoramique 350m ou 450m (¥2,700) · réserver en ligne",c:"ac",bgt:2700,res:"Réserver sur tokyo-skytree.jp/en/ticket · 1-3 jours avant · éviter les week-ends",gm:"https://www.google.com/maps/dir/Senso-ji+Temple/Tokyo+Skytree",ap:"https://maps.apple.com/?saddr=Senso-ji+Temple&daddr=Tokyo+Skytree",site:"https://www.tokyo-skytree.jp/en/ticket/"},
+    {h:"14h00",t:"🍡 Street food Nakamise-dori · ningyo-yaki · melonpan · brochettes",c:"fo",bgt:800}
   ]},
   {lbl:"🌇 Après-midi — Akihabara",items:[
-    {h:"14h30",t:"Akihabara — Don Quijote 8 étages · Mandarake · BookOff · Engawa · magasins alentours",c:"ac",gm:"https://www.google.com/maps/dir/Nakamise-dori+Asakusa/Don+Quijote+Akihabara",ap:"https://maps.apple.com/?saddr=Nakamise-dori+Asakusa&daddr=Don+Quijote+Akihabara"}
+    {h:"14h45",t:"Akihabara — Don Quijote 8 étages · Mandarake · BookOff · Engawa · magasins alentours",c:"ac",gm:"https://www.google.com/maps/dir/Nakamise-dori+Asakusa/Don+Quijote+Akihabara",ap:"https://maps.apple.com/?saddr=Nakamise-dori+Asakusa&daddr=Don+Quijote+Akihabara"}
   ]},
   {lbl:"🌙 Soir — Tokyo Tower + Restaurant poisson",items:[
     {h:"18h00",t:"🌃 Balade nocturne Tokyo Tower illuminée + Zojo-ji Temple de nuit · 5 min à pied",c:"ac",gm:"https://www.google.com/maps/dir/Don+Quijote+Akihabara/Tokyo+Tower",ap:"https://maps.apple.com/?saddr=Don+Quijote+Akihabara&daddr=Tokyo+Tower"},
     {h:"19h30",t:"▶ Gonpachi Roppongi — izakaya · saumon grillé · dorade · légumes · ~¥5,000/pers",c:"fo",bgt:10000,gm:"https://www.google.com/maps/dir/Tokyo+Tower/Gonpachi+Roppongi+Tokyo",ap:"https://maps.apple.com/?saddr=Tokyo+Tower&daddr=Gonpachi+Roppongi"},
     {h:"",t:"▶ Option : izakaya Azabu-Juban — sashimi saumon/dorade · ~¥2,500-3,500/pers",c:"fo",bgt:7000},
     {h:"21h30",t:"🌃 Roppongi Hills illuminations · promenade nocturne",c:"ac",gm:"https://www.google.com/maps/dir/Gonpachi+Roppongi/Roppongi+Hills+Tokyo",ap:"https://maps.apple.com/?saddr=Gonpachi+Roppongi&daddr=Roppongi+Hills"}
-  ]},
-  {lbl:"⭐ Option",opt:true,items:[
-    {h:"opt",t:"🐼 Zoo de Ueno — 15 min à pied de Nezu Shrine · pandas · éléphants · ¥600 · ferme 17h",c:"opt",bgt:600,gm:"https://www.google.com/maps/dir/Nezu+Shrine+Tokyo/Ueno+Zoo+Tokyo",ap:"https://maps.apple.com/?saddr=Nezu+Shrine+Tokyo&daddr=Ueno+Zoo+Tokyo"}
   ]}
-],notes:[{t:"J2 = meilleur jour pour le Zoo Ueno — à 15 min à pied de Nezu Shrine !",w:false}]},
+],notes:[{t:"Zoo de Ueno intégré le matin — directement après Nezu Shrine (15 min à pied) · ferme à 17h",w:false}]},
 
 {n:3,d:"Mer 12/08",v:"Tokyo",city:"tokyo",type:"normal",title:"Hakone full day OU Nakano à partir de 16h",hotel:"Hyatt Regency Nishi-Shinjuku",blocks:[
+  {lbl:"🍵 Matcha du matin (avant départ)",items:[
+    {h:"06h30",t:"🍵 Matcha rapide à emporter — konbini 7-Eleven ou FamilyMart · pour bien démarrer la journée avant le train",c:"matcha",bgt:300}
+  ]},
   {lbl:"OPTION A — Hakone (si beau temps)",items:[
     {h:"07h00",t:"Romance Car Shinjuku → Hakone-Yumoto · côté droit pour la vue",c:"tr",bgt:4940,gm:"https://www.google.com/maps/dir/Shinjuku+Station/Hakone-Yumoto+Station",ap:"https://maps.apple.com/?saddr=Shinjuku+Station&daddr=Hakone-Yumoto+Station",tid:"romance",site:"https://www.odakyu.jp/english/romancecar/"},
     {h:"09h00",t:"Train montagne → câble → Ropeway → Owakudani (vallée volcanique)",c:"ac",gm:"https://www.google.com/maps/dir/Hakone-Yumoto+Station/Owakudani+Hakone",ap:"https://maps.apple.com/?saddr=Hakone-Yumoto&daddr=Owakudani+Hakone"},
@@ -660,8 +669,7 @@ var DAYS=[
     {h:"08h30",t:"🍜 Chanko-nabe petit-déjeuner à Ryogoku — bouillon des lutteurs · ¥1,500/pers",c:"fo",bgt:3000,gm:"https://www.google.com/maps/search/Chanko+nabe+Ryogoku+Tokyo",ap:"https://maps.apple.com/?q=Chanko+Nabe+Ryogoku"}
   ]},
   {lbl:"🌅 Matin — Brunch",items:[
-    {h:"09h30",t:"🥞 Bills Tokyo Omotesando — LE brunch de référence · ricotta pancakes · ~¥2,500-3,500/pers",c:"fo",bgt:7000,gm:"https://www.google.com/maps/dir/Hyatt+Regency+Tokyo/Bills+Tokyo+Omotesando",ap:"https://maps.apple.com/?saddr=Hyatt+Regency+Tokyo&daddr=Bills+Tokyo+Omotesando"},
-    {h:"",t:"▶ Option B : A16 Tokyo Omotesando — brunch californien · légumes · ~¥2,000/pers",c:"fo",bgt:4000}
+    {h:"09h30",t:"🥞 Bills Tokyo Omotesando — LE brunch de référence · ricotta pancakes · ~¥2,500-3,500/pers",c:"fo",bgt:7000,gm:"https://www.google.com/maps/dir/Hyatt+Regency+Tokyo/Bills+Tokyo+Omotesando",ap:"https://maps.apple.com/?saddr=Hyatt+Regency+Tokyo&daddr=Bills+Tokyo+Omotesando",site:"https://billswebsite.com/"}
   ]},
   {lbl:"🍵 Matcha du jour",items:[
     {h:"11h00",t:"🍵 Ippodo Tea Marunouchi — LA maison légendaire depuis 1717 · stand matcha",c:"matcha",bgt:1200,gm:"https://www.google.com/maps/search/Ippodo+Tea+Marunouchi+Tokyo",ap:"https://maps.apple.com/?q=Ippodo+Tea+Marunouchi+Tokyo",site:"https://www.ippodo-tea.co.jp/en/"}
@@ -672,7 +680,7 @@ var DAYS=[
     {h:"13h30",t:"🥢 Uzu Vegan Ramen — vegan d'exception · bouillon végétal riche · 100% cacherout",c:"fo",bgt:1500,gm:"https://www.google.com/maps/dir/Tsukiji+Outer+Market/Uzu+Vegan+Ramen+Tokyo",ap:"https://maps.apple.com/?saddr=Tsukiji+Outer+Market&daddr=Uzu+Vegan+Ramen+Tokyo"}
   ]},
   {lbl:"🌇 Après-midi — TeamLab DIRECTEMENT après manger",items:[
-    {h:"15h00",t:"★ TeamLab Planets TOKYO — directement après · pieds nus · RÉSERVER 2-3 sem avant",c:"ac",bgt:7600,gm:"https://www.google.com/maps/dir/Uzu+Vegan+Ramen+Tokyo/TeamLab+Planets+Tokyo+Toyosu",ap:"https://maps.apple.com/?saddr=Uzu+Vegan+Ramen&daddr=TeamLab+Planets+Tokyo",site:"https://planets.teamlab.art/tokyo/"},
+    {h:"15h00",t:"★ TeamLab Planets TOKYO — directement après · pieds nus · RÉSERVER 2-3 sem avant",c:"ac",bgt:7600,res:"Réserver sur planets.teamlab.art · sold out rapidement en été · créneaux 15h-20h recommandés",gm:"https://www.google.com/maps/dir/Uzu+Vegan+Ramen+Tokyo/TeamLab+Planets+Tokyo+Toyosu",ap:"https://maps.apple.com/?saddr=Uzu+Vegan+Ramen&daddr=TeamLab+Planets+Tokyo",site:"https://planets.teamlab.art/tokyo/"},
     {h:"17h30",t:"GU Ginza + Uniqlo Ginza flagship (12 étages) · côte à côte",c:"ac",gm:"https://www.google.com/maps/dir/TeamLab+Planets+Tokyo/Uniqlo+Ginza+Tokyo",ap:"https://maps.apple.com/?saddr=TeamLab+Planets+Tokyo&daddr=Uniqlo+Ginza+Tokyo"},
     {h:"",t:"▶ Option : Mori Art Museum Roppongi — vue de nuit + art contemporain",c:"ac",gm:"https://www.google.com/maps/dir/TeamLab+Planets+Tokyo/Mori+Art+Museum+Roppongi",ap:"https://maps.apple.com/?saddr=TeamLab+Planets+Tokyo&daddr=Mori+Art+Museum+Roppongi"}
   ]},
@@ -688,6 +696,9 @@ var DAYS=[
 ],notes:[]},
 
 {n:5,d:"Ven 14/08",v:"Tokyo",city:"tokyo",type:"erev",title:"AP Museum · Brunch / Sushi · Shopping Vintage · Shibuya Sky · 🕯 Chabbat",hotel:"Hyatt Regency Nishi-Shinjuku",shab:true,blocks:[
+  {lbl:"☕ Café du matin",items:[
+    {h:"09h00",t:"☕ BAM BICOFFEE 2 — café de spécialité incontournable · baristas passionnés · vibe artisanal Tokyo",c:"fo",bgt:800,gm:"https://www.google.com/maps/search/BAM+BICOFFEE+Tokyo",ap:"https://maps.apple.com/?q=BAM+BICOFFEE+Tokyo"}
+  ]},
   {lbl:"🌅 Matin — AP Museum",items:[
     {h:"10h00",t:"★ Musée Audemars Piguet Lab Omotesando — collection d'exception · gratuit",c:"ac",gm:"https://www.google.com/maps/dir/Hyatt+Regency+Tokyo/Audemars+Piguet+Lab+Tokyo",ap:"https://maps.apple.com/?saddr=Hyatt+Regency+Tokyo&daddr=Audemars+Piguet+Lab+Tokyo"}
   ]},
@@ -698,13 +709,13 @@ var DAYS=[
     {h:"",t:"▶ Brunch : Bread Espresso & Omotesando — boulangerie française culte · ¥1,500/pers",c:"fo",bgt:3000,gm:"https://www.google.com/maps/dir/Hyatt+Regency+Tokyo/Bread+Espresso+Omotesando",ap:"https://maps.apple.com/?saddr=Hyatt+Regency+Tokyo&daddr=Bread+Espresso+Omotesando"}
   ]},
   {lbl:"🍵 Matcha du jour",items:[
-    {h:"13h30",t:"🍵 Ippodo Tea Marunouchi — matcha cérémonie · depuis 1717",c:"matcha",bgt:1500,gm:"https://www.google.com/maps/search/Ippodo+Tea+Marunouchi+Tokyo",ap:"https://maps.apple.com/?q=Ippodo+Tea+Marunouchi+Tokyo",site:"https://www.ippodo-tea.co.jp/en/"}
+    {h:"13h30",t:"🍵 Café Lambert — café matcha élégant · ambiance douce · parfait avant Shibuya Sky",c:"matcha",bgt:1500,gm:"https://www.google.com/maps/search/Cafe+Lambert+Tokyo",ap:"https://maps.apple.com/?q=Cafe+Lambert+Tokyo"}
   ]},
   {lbl:"🌇 Après-midi — Shopping · Amam Dacotan · Shibuya Sky 17h30",items:[
-    {h:"14h00",t:"Shopping vintage montres & maroquinerie — Ragtag Shibuya · Komehyo Ginza",c:"ac",gm:"https://www.google.com/maps/dir/Ippodo+Tea+Marunouchi/Ragtag+Shibuya",ap:"https://maps.apple.com/?saddr=Ippodo+Tea+Marunouchi&daddr=Ragtag+Shibuya"},
+    {h:"14h00",t:"Shopping vintage montres & maroquinerie — Ragtag Shibuya · Komehyo Ginza",c:"ac",gm:"https://www.google.com/maps/dir/Cafe+Lambert+Tokyo/Ragtag+Shibuya",ap:"https://maps.apple.com/?saddr=Cafe+Lambert+Tokyo&daddr=Ragtag+Shibuya"},
     {h:"15h00",t:"🌸 Amam Dacotan Tokyo Daikanyama — boulangerie star · pains sculptés · instagrammable",c:"fo",bgt:1500,gm:"https://www.google.com/maps/dir/Ragtag+Shibuya/Amam+Dacotan+Daikanyama",ap:"https://maps.apple.com/?saddr=Ragtag+Shibuya&daddr=Amam+Dacotan+Daikanyama"},
     {h:"15h30",t:"Uniqlo Ginza flagship (12 étages) + GU à côté",c:"ac",gm:"https://www.google.com/maps/dir/Amam+Dacotan+Daikanyama/Uniqlo+Ginza+Tokyo",ap:"https://maps.apple.com/?saddr=Amam+Dacotan+Daikanyama&daddr=Uniqlo+Ginza+Tokyo"},
-    {h:"17h30",t:"🌆 Shibuya Sky — observatory · COUCHER DE SOLEIL · vue 360° Tokyo (¥2,000) · réserver en ligne",c:"ac",bgt:2000,gm:"https://www.google.com/maps/dir/Uniqlo+Ginza/Shibuya+Sky+Observatory",ap:"https://maps.apple.com/?saddr=Uniqlo+Ginza&daddr=Shibuya+Sky+Observatory",site:"https://www.shibuya-scramble-square.com/sky/"}
+    {h:"17h30",t:"🌆 Shibuya Sky — observatory · COUCHER DE SOLEIL · vue 360° Tokyo (¥2,000) · réserver en ligne",c:"ac",bgt:2000,res:"Réserver sur shibuya-scramble-square.com · 3-5 jours avant · créneau 17h30-18h00 pour le coucher de soleil",gm:"https://www.google.com/maps/dir/Uniqlo+Ginza/Shibuya+Sky+Observatory",ap:"https://maps.apple.com/?saddr=Uniqlo+Ginza&daddr=Shibuya+Sky+Observatory",site:"https://www.shibuya-scramble-square.com/sky/"}
   ]},
   {lbl:"🌙 Erev Chabbat",items:[
     {h:"18h30",t:"⚠️ Retour hôtel · dîner réservé au restaurant Hyatt avant Chabbat",c:"ho"},
@@ -736,69 +747,86 @@ var DAYS=[
   ]}
 ],notes:[{t:"Balades uniquement à pied · Pas de transport ni paiement le Chabbat",w:false}]},
 
-{n:7,d:"Dim 16/08",v:"Tokyo",city:"tokyo",type:"normal",title:"Kappabashi · Round One · Karting",hotel:"Hyatt Regency Nishi-Shinjuku",blocks:[
-  {lbl:"🌅 Matin — Kappabashi + Petit-déjeuner",items:[
-    {h:"09h00",t:"☕ Fuglen Tokyo Yoyogi — café norvégien de référence OU café local Asakusa",c:"fo",bgt:1500,gm:"https://www.google.com/maps/dir/Hyatt+Regency+Tokyo/Fuglen+Tokyo+Yoyogi",ap:"https://maps.apple.com/?saddr=Hyatt+Regency+Tokyo&daddr=Fuglen+Tokyo+Yoyogi"},
-    {h:"10h00",t:"🍳 Kappabashi Dori — 170 boutiques cuisine pro · couteaux japonais · ustensiles matcha",c:"ac",gm:"https://www.google.com/maps/dir/Fuglen+Tokyo+Yoyogi/Kappabashi+Kitchen+Street+Tokyo",ap:"https://maps.apple.com/?saddr=Fuglen+Tokyo&daddr=Kappabashi+Kitchen+Street+Tokyo"}
+{n:7,d:"Dim 16/08",v:"Tokyo",city:"tokyo",type:"normal",title:"Kappabashi · Matcha tasting · Karting · Dîner izakaya",hotel:"Hyatt Regency Nishi-Shinjuku",blocks:[
+  {lbl:"🌅 Matin — Café + Kappabashi",items:[
+    {h:"09h00",t:"☕ Café Lambert Tokyo — café de spécialité élégant · ambiance soignée · parfait pour commencer",c:"fo",bgt:1200,gm:"https://www.google.com/maps/search/Cafe+Lambert+Tokyo",ap:"https://maps.apple.com/?q=Cafe+Lambert+Tokyo"},
+    {h:"",t:"▶ Option : Hiragi Ginza — café artisanal Ginza · beans de spécialité · atmosphère raffinée",c:"fo",bgt:1000,gm:"https://www.google.com/maps/search/Hiragi+Ginza+Tokyo",ap:"https://maps.apple.com/?q=Hiragi+Ginza+Tokyo"},
+    {h:"10h00",t:"🍳 Kappabashi Dori — 170 boutiques cuisine pro · couteaux japonais · ustensiles matcha",c:"ac",gm:"https://www.google.com/maps/dir/Cafe+Lambert+Tokyo/Kappabashi+Kitchen+Street+Tokyo",ap:"https://maps.apple.com/?saddr=Cafe+Lambert+Tokyo&daddr=Kappabashi+Kitchen+Street+Tokyo"}
   ]},
-  {lbl:"🍵 Matcha du jour",items:[
-    {h:"11h30",t:"🍵 Boutiques matcha Kappabashi — acheter ustensiles et matcha professionnel",c:"matcha",bgt:2000,gm:"https://www.google.com/maps/search/Kappabashi+matcha+Tokyo",ap:"https://maps.apple.com/?q=Kappabashi+Kitchen+Street+Tokyo"}
+  {lbl:"🍵 Séance de dégustation matcha",items:[
+    {h:"11h30",t:"🍵 Dégustation matcha Kappabashi — atelier comparatif · grades cérémonie vs culinaire · acheter ustensiles pro",c:"matcha",bgt:3000,gm:"https://www.google.com/maps/search/Kappabashi+matcha+Tokyo",ap:"https://maps.apple.com/?q=Kappabashi+Kitchen+Street+Tokyo"}
   ]},
   {lbl:"☀️ Midi — Déjeuner typique japonais",items:[
     {h:"12h00",t:"🍽 Daikokuya Asakusa — tempura poissons et légumes · depuis 1887 · ¥2,500/pers · 100% cacherout",c:"fo",bgt:5000,gm:"https://www.google.com/maps/dir/Kappabashi+Kitchen+Street/Daikokuya+Tempura+Asakusa",ap:"https://maps.apple.com/?saddr=Kappabashi+Kitchen+Street&daddr=Daikokuya+Tempura+Asakusa"},
     {h:"",t:"▶ Option soba : Soba Matsuya Asakusa — soba végétarien · dashi · ¥1,200/pers",c:"fo",bgt:2400}
   ]},
-  {lbl:"🌇 Après-midi — Round One + Karting",items:[
-    {h:"14h00",t:"🎳 Round One Stadium Shibuya — bowling · karaoké · sports · darts · 6 étages !",c:"ac",bgt:4000,gm:"https://www.google.com/maps/dir/Asakusa/Round+One+Stadium+Shibuya",ap:"https://maps.apple.com/?saddr=Asakusa&daddr=Round+One+Stadium+Shibuya",site:"https://www.round1.co.jp/"},
-    {h:"16h30",t:"🏎 Karting Tokyo — Maricar ou Kart One · karting sur les routes de Tokyo",c:"ac",bgt:10000,gm:"https://www.google.com/maps/dir/Round+One+Stadium+Shibuya/Kart+One+Tokyo",ap:"https://maps.apple.com/?saddr=Round+One+Stadium+Shibuya&daddr=Kart+One+Tokyo"}
+  {lbl:"🌇 Après-midi — Karting Tokyo",items:[
+    {h:"14h30",t:"🏎 Karting Tokyo — Maricar ou Kart One · karting sur les routes de Tokyo · sensations garanties",c:"ac",bgt:10000,gm:"https://www.google.com/maps/dir/Asakusa/Kart+One+Tokyo",ap:"https://maps.apple.com/?saddr=Asakusa&daddr=Kart+One+Tokyo"}
   ]},
-  {lbl:"🌙 Soir",items:[
-    {h:"19h30",t:"🍽 Isomaru Suisan Shinjuku — izakaya poissons · sashimi saumon/daurade · ~¥4,000/pers",c:"fo",bgt:8000,gm:"https://www.google.com/maps/dir/Hyatt+Regency+Tokyo/Isomaru+Suisan+Shinjuku",ap:"https://maps.apple.com/?saddr=Hyatt+Regency+Tokyo&daddr=Isomaru+Suisan+Shinjuku"},
+  {lbl:"🌙 Soir — Dîner izakaya",items:[
+    {h:"19h30",t:"🍽 Torishiki Shinjuku — yakitori de qualité · charbon · saumon · ¥4,000/pers",c:"fo",bgt:8000,gm:"https://www.google.com/maps/dir/Hyatt+Regency+Tokyo/Shinjuku+izakaya+Tokyo",ap:"https://maps.apple.com/?saddr=Hyatt+Regency+Tokyo&daddr=Shinjuku+Tokyo"},
+    {h:"",t:"▶ Option : Gyu-Kaku Shinjuku — yakiniku wagyu grill à la table · convivial · ~¥3,500/pers",c:"fo",bgt:7000,gm:"https://www.google.com/maps/search/Gyu-Kaku+Shinjuku+Tokyo",ap:"https://maps.apple.com/?q=Gyu-Kaku+Shinjuku"},
     {h:"21h00",t:"🎮 Golden Gai derniers verres OU 2e session karaoké",c:"ac",bgt:2000}
+  ]},
+  {lbl:"⭐ Option soirée — Round One",opt:true,items:[
+    {h:"opt",t:"🎳 Round One Stadium Shibuya — bowling · sports · darts · 6 étages · ouvert tard · à déplacer ici si Chabbat J6 terminé tôt",c:"opt",bgt:4000,gm:"https://www.google.com/maps/dir/Hyatt+Regency+Tokyo/Round+One+Stadium+Shibuya",ap:"https://maps.apple.com/?saddr=Hyatt+Regency+Tokyo&daddr=Round+One+Stadium+Shibuya",site:"https://www.round1.co.jp/"}
   ]}
-],notes:[{t:"Uniqlo Shinjuku + GU — si pas fait J4 ou J5",w:false}]},
+],notes:[{t:"Uniqlo Shinjuku + GU — si pas fait J4 ou J5",w:false},{t:"Round One peut aussi se faire post-Havdalah le Chabbat (J6) si les horaires le permettent",w:false}]},
 
 // ── TAKAYAMA ──
-{n:8,d:"Lun 17/08",v:"Tokyo → Takayama",city:"takayama",type:"normal",title:"Transfert · Alpes japonaises · Boutiques Edo · Premier soir ryokan",hotel:"Honjin Hiranoya Kachoan",blocks:[
+{n:8,d:"Lun 17/08",v:"Tokyo → Takayama",city:"takayama",type:"normal",title:"Transfert · Alpes japonaises · HAIZ Coffee · Boutiques Edo · Premier soir ryokan",hotel:"Honjin Hiranoya Kachoan",blocks:[
   {lbl:"🌅 Matin — Transfert",items:[
     {h:"07h00",t:"Petit-déj' Hyatt · check-out · taxi → Tokyo Station (¥3,500)",c:"tr",bgt:3500,gm:"https://www.google.com/maps/dir/Hyatt+Regency+Tokyo/Tokyo+Station",ap:"https://maps.apple.com/?saddr=Hyatt+Regency+Tokyo&daddr=Tokyo+Station"},
     {h:"08h00",t:"🚄 Shinkansen Nozomi Tokyo → Nagoya (1h40 · ¥11,300/pers)",c:"tr",bgt:22600,gm:"https://www.google.com/maps/dir/Tokyo+Station/Nagoya+Station",ap:"https://maps.apple.com/?saddr=Tokyo+Station&daddr=Nagoya+Station",tid:"nozomi",site:"https://smart-ex.jp/en/index.php"},
     {h:"09h40",t:"🚂 Limited Express Hida → Takayama (2h30 · ¥6,140/pers) · paysage Alpes japonaises",c:"tr",bgt:12280,gm:"https://www.google.com/maps/dir/Nagoya+Station/Takayama+Station+Gifu",ap:"https://maps.apple.com/?saddr=Nagoya+Station&daddr=Takayama+Station",tid:"hida"},
     {h:"11h00",t:"🍱 Ekiben acheté à Nagoya · déjeuner avec vue sur les Alpes",c:"fo",bgt:1200}
   ]},
-  {lbl:"🌇 Arrivée ryokan + Boutiques",items:[
+  {lbl:"🌇 Arrivée Takayama + HAIZ Coffee",items:[
     {h:"12h10",t:"Arrivée Takayama · navette gratuite ryokan · accueil thé matcha · yukata",c:"ho",gm:"https://www.google.com/maps/dir/Takayama+Station/Honjin+Hiranoya+Kachoan",ap:"https://maps.apple.com/?saddr=Takayama+Station&daddr=Honjin+Hiranoya+Kachoan",site:"https://www.honjin-hiranoya.com/"},
-    {h:"13h30",t:"🛁 Bain onsen de l'hôtel en couple · source thermale Hida · kashikiri · inclus",c:"ac"},
+    {h:"13h00",t:"☕ HAIZ Coffee Takayama — café de spécialité culte des Alpes japonaises · torréfaction locale · ambiance montagne",c:"fo",bgt:800,gm:"https://www.google.com/maps/search/HAIZ+Coffee+Takayama",ap:"https://maps.apple.com/?q=HAIZ+Coffee+Takayama"},
+    {h:"14h00",t:"🛁 Bain onsen de l'hôtel en couple · source thermale Hida · kashikiri · inclus",c:"ac"},
     {h:"15h00",t:"🛍 Balade Sanmachi-suji — lacquerware · sake shops · artisanat Hida · photos des façades Edo",c:"ac",gm:"https://www.google.com/maps/dir/Honjin+Hiranoya+Kachoan/Sannomachi+Street+Takayama",ap:"https://maps.apple.com/?saddr=Honjin+Hiranoya+Kachoan&daddr=Sannomachi+Street+Takayama"},
     {h:"16h00",t:"📸 Photos spots — canal Enako · ruelles pavées · vue sur les montagnes · lumière d'après-midi",c:"ac",gm:"https://www.google.com/maps/dir/Sannomachi+Street+Takayama/Nakabashi+Bridge+Takayama",ap:"https://maps.apple.com/?saddr=Sannomachi+Street&daddr=Nakabashi+Bridge+Takayama"},
     {h:"17h00",t:"Kusakabe Mingeikan — musée des arts folkloriques Hida · belle maison Edo (¥500)",c:"ac",bgt:500,gm:"https://www.google.com/maps/dir/Nakabashi+Bridge+Takayama/Kusakabe+Mingeikan+Takayama",ap:"https://maps.apple.com/?saddr=Nakabashi+Bridge+Takayama&daddr=Kusakabe+Mingeikan+Takayama"}
   ]},
-  {lbl:"🌙 Soir — Dîner kaiseki + Balade nocturne",items:[
-    {h:"18h30",t:"🍽 Dîner kaiseki en chambre privée — 8-10 plats · poissons + légumes · inclus",c:"fo"},
-    {h:"20h30",t:"🌙 Sanmachi-suji de nuit · lanternes allumées · bars à saké ouverts · romantique",c:"ac",gm:"https://www.google.com/maps/dir/Honjin+Hiranoya+Kachoan/Sanmachi-suji+Takayama",ap:"https://maps.apple.com/?saddr=Honjin+Hiranoya+Kachoan&daddr=Sanmachi-suji+Takayama"},
-    {h:"21h30",t:"🍶 Cave à saké Sanmachi · Hirano Sake Shop · ambiance traditionnelle",c:"ac",bgt:1000}
+  {lbl:"🌙 Soir — Dîner + Balade nocturne",items:[
+    {h:"19h30",t:"🍽 Dîner kaiseki en chambre privée — 8-10 plats · poissons + légumes · inclus",c:"fo"},
+    {h:"",t:"▶ Option : Kakusho Takayama — tofu et légumes de saison · terrasse · ~¥3,500/pers · 100% cacherout",c:"fo",bgt:7000,gm:"https://www.google.com/maps/dir/Honjin+Hiranoya+Kachoan/Kakusho+restaurant+Takayama",ap:"https://maps.apple.com/?saddr=Honjin+Hiranoya+Kachoan&daddr=Kakusho+restaurant+Takayama"},
+    {h:"",t:"▶ Option : Stalls de rue Sanmachi · mitarashi dango · soba froid · ~¥1,500/pers",c:"fo",bgt:1500},
+    {h:"21h00",t:"🌙 Sanmachi-suji de nuit · lanternes allumées · bars à saké ouverts · romantique",c:"ac",gm:"https://www.google.com/maps/dir/Honjin+Hiranoya+Kachoan/Sanmachi-suji+Takayama",ap:"https://maps.apple.com/?saddr=Honjin+Hiranoya+Kachoan&daddr=Sanmachi-suji+Takayama"},
+    {h:"22h00",t:"🍶 Cave à saké Sanmachi · Hirano Sake Shop · ambiance traditionnelle",c:"ac",bgt:1000}
   ]}
 ],notes:[]},
 
-{n:9,d:"Mar 18/08",v:"Takayama",city:"takayama",type:"normal",title:"Shirakawa-go (UNESCO) · Takayama Jinya · Dîner en plein air · Pont Nakabashi",hotel:"Honjin Hiranoya Kachoan",blocks:[
-  {lbl:"🌅 Matin — Shirakawa-go UNESCO",items:[
-    {h:"07h00",t:"Petit-déjeuner ryokan · miso · riz · pickles · dashi kombu",c:"ho"},
-    {h:"07h45",t:"🚌 Bus Nohi → Shirakawa-go (50 min · ¥4,600 A/R) · réserver J-1 absolument",c:"tr",bgt:9200,gm:"https://www.google.com/maps/dir/Takayama+Bus+Terminal/Shirakawa-go+Gifu",ap:"https://maps.apple.com/?saddr=Takayama+Bus+Terminal&daddr=Shirakawa-go+Gifu",tid:"shira",site:"https://www.nouhibus.co.jp/en/shirakawago/"},
-    {h:"09h30",t:"Maison Wada — intérieur gassho-zukuri · 3 étages (¥400)",c:"ac",bgt:400,gm:"https://www.google.com/maps/dir/Shirakawa-go/Wada+House+Shirakawa-go",ap:"https://maps.apple.com/?saddr=Shirakawa-go&daddr=Wada+House+Shirakawa-go"},
+{n:9,d:"Mar 18/08",v:"Takayama",city:"takayama",type:"normal",title:"+++ KAMIKOCHI — Vallée des Alpes · ou Shirakawa-go UNESCO",hotel:"Honjin Hiranoya Kachoan",blocks:[
+  {lbl:"🌅 Petit-déjeuner ryokan",items:[
+    {h:"06h30",t:"Petit-déjeuner ryokan · miso · riz · pickles · dashi kombu · départ tôt pour Kamikochi",c:"ho"}
+  ]},
+  {lbl:"🏔 OPTION A +++ — KAMIKOCHI (RECOMMANDÉ — ne pas rater !)",items:[
+    {h:"07h15",t:"🚌 Bus Nohi → Kamikochi (1h15 · ¥2,600/pers A/R) · réserver ABSOLUMENT J-1 · pass spécial",c:"tr",bgt:5200,gm:"https://www.google.com/maps/dir/Takayama+Bus+Terminal/Kamikochi+Nagano",ap:"https://maps.apple.com/?saddr=Takayama+Bus+Terminal&daddr=Kamikochi+Nagano",site:"https://www.kamikochi.or.jp/en/"},
+    {h:"08h30",t:"🏔 Arrivée Kamikochi — l'une des plus belles vallées alpines du monde · interdite aux voitures · air pur",c:"ac",gm:"https://www.google.com/maps/search/Kamikochi+Nagano",ap:"https://maps.apple.com/?q=Kamikochi+Nagano"},
+    {h:"09h00",t:"🌉 Kappa Bridge — pont suspendu emblématique · vue sur la chaîne Hotaka · reflets turquoise",c:"ac",gm:"https://www.google.com/maps/dir/Kamikochi+Bus+Terminal/Kappabashi+Bridge+Kamikochi",ap:"https://maps.apple.com/?saddr=Kamikochi+Bus+Terminal&daddr=Kappabashi+Bridge+Kamikochi"},
+    {h:"10h00",t:"🌿 Randonnée Taisho Pond → Myojin Pond — marche panoramique · eaux cristallines · cerfs sauvages",c:"ac",gm:"https://www.google.com/maps/dir/Kappabashi+Bridge/Taisho+Pond+Kamikochi",ap:"https://maps.apple.com/?saddr=Kappabashi+Bridge+Kamikochi&daddr=Taisho+Pond+Kamikochi"},
+    {h:"12h30",t:"🍱 Déjeuner bento au bord de la rivière Azusa · acheté à la boutique Kamikochi",c:"fo",bgt:1200},
+    {h:"14h30",t:"🚌 Bus retour Takayama",c:"tr",gm:"https://www.google.com/maps/dir/Kamikochi+Nagano/Takayama+Bus+Terminal",ap:"https://maps.apple.com/?saddr=Kamikochi+Nagano&daddr=Takayama+Bus+Terminal"}
+  ]},
+  {lbl:"🏘 OPTION B — Shirakawa-go UNESCO",items:[
+    {h:"07h45",t:"🚌 Bus Nohi → Shirakawa-go (50 min · ¥4,600 A/R) · réserver J-1 absolument",c:"tr",bgt:9200,gm:"https://www.google.com/maps/dir/Takayama+Bus+Terminal/Shirakawa-go+Gifu",ap:"https://maps.apple.com/?saddr=Takayama+Bus+Terminal&daddr=Shirakawa-go+Gifu",site:"https://www.nouhibus.co.jp/en/shirakawago/"},
+    {h:"09h30",t:"Maison Wada — intérieur gassho-zukuri · toits en chaume · 3 étages (¥400)",c:"ac",bgt:400,gm:"https://www.google.com/maps/dir/Shirakawa-go/Wada+House+Shirakawa-go",ap:"https://maps.apple.com/?saddr=Shirakawa-go&daddr=Wada+House+Shirakawa-go"},
     {h:"10h30",t:"🍢 Mitarashi dango + amazake chaud · stands de rue Shirakawa-go",c:"fo",bgt:500},
     {h:"13h00",t:"🚌 Bus retour Takayama",c:"tr",gm:"https://www.google.com/maps/dir/Shirakawa-go/Takayama+Station",ap:"https://maps.apple.com/?saddr=Shirakawa-go&daddr=Takayama+Station"}
   ]},
-  {lbl:"🌇 Après-midi — Takayama Jinya + Musée chars",items:[
-    {h:"15h00",t:"Takayama Jinya — résidence gouverneur Edo · seule subsistante au Japon (¥440)",c:"ac",bgt:440,gm:"https://www.google.com/maps/dir/Takayama+Station/Takayama+Jinya",ap:"https://maps.apple.com/?saddr=Takayama+Station&daddr=Takayama+Jinya",site:"https://jinya.gifu.jp/en/"},
-    {h:"16h00",t:"Yatai Kaikan — Musée des chars du Festival · chars dorés fabuleux (¥1,000)",c:"ac",bgt:1000,gm:"https://www.google.com/maps/dir/Takayama+Jinya/Takayama+Festival+Floats+Exhibition+Hall",ap:"https://maps.apple.com/?saddr=Takayama+Jinya&daddr=Takayama+Festival+Floats"}
+  {lbl:"🌇 Retour Takayama — Jinya + Musée chars",items:[
+    {h:"16h00",t:"Takayama Jinya — résidence gouverneur Edo · seule subsistante au Japon (¥440)",c:"ac",bgt:440,gm:"https://www.google.com/maps/dir/Takayama+Station/Takayama+Jinya",ap:"https://maps.apple.com/?saddr=Takayama+Station&daddr=Takayama+Jinya",site:"https://jinya.gifu.jp/en/"},
+    {h:"17h00",t:"Yatai Kaikan — Musée des chars du Festival · chars dorés fabuleux (¥1,000)",c:"ac",bgt:1000,gm:"https://www.google.com/maps/dir/Takayama+Jinya/Takayama+Festival+Floats+Exhibition+Hall",ap:"https://maps.apple.com/?saddr=Takayama+Jinya&daddr=Takayama+Festival+Floats"}
   ]},
   {lbl:"🌙 Soir — Restaurant typique + Pont Nakabashi",items:[
-    {h:"18h30",t:"🍽 Kakusho Takayama — tofu et légumes de saison · terrasse · ~¥3,500/pers · 100% cacherout",c:"fo",bgt:7000,gm:"https://www.google.com/maps/dir/Honjin+Hiranoya+Kachoan/Kakusho+restaurant+Takayama",ap:"https://maps.apple.com/?saddr=Honjin+Hiranoya+Kachoan&daddr=Kakusho+restaurant+Takayama"},
-    {h:"",t:"▶ Option dîner en se promenant : stalls de rue Sanmachi · mitarashi · soba froid · ~¥1,500",c:"fo",bgt:1500},
-    {h:"20h30",t:"🌉 Pont Nakabashi illuminé — emblème de Takayama · photographies nocturnes · reflet dans la rivière",c:"ac",gm:"https://www.google.com/maps/dir/Kakusho+restaurant+Takayama/Nakabashi+Bridge+Takayama",ap:"https://maps.apple.com/?saddr=Kakusho+restaurant+Takayama&daddr=Nakabashi+Bridge+Takayama"},
-    {h:"21h30",t:"🍶 Bar à saké Sanmachi de nuit · Takayama s'anime le soir",c:"ac",bgt:1000}
+    {h:"19h00",t:"🍽 Kakusho Takayama — tofu et légumes de saison · terrasse · ~¥3,500/pers · 100% cacherout",c:"fo",bgt:7000,gm:"https://www.google.com/maps/dir/Honjin+Hiranoya+Kachoan/Kakusho+restaurant+Takayama",ap:"https://maps.apple.com/?saddr=Honjin+Hiranoya+Kachoan&daddr=Kakusho+restaurant+Takayama"},
+    {h:"",t:"▶ Option : stalls de rue Sanmachi · mitarashi · soba froid · ~¥1,500",c:"fo",bgt:1500},
+    {h:"21h00",t:"🌉 Pont Nakabashi illuminé — emblème de Takayama · photographies nocturnes · reflet dans la rivière",c:"ac",gm:"https://www.google.com/maps/dir/Kakusho+restaurant+Takayama/Nakabashi+Bridge+Takayama",ap:"https://maps.apple.com/?saddr=Kakusho+restaurant+Takayama&daddr=Nakabashi+Bridge+Takayama"},
+    {h:"22h00",t:"🍶 Bar à saké Sanmachi de nuit · Takayama s'anime le soir",c:"ac",bgt:1000}
   ]}
-],notes:[{t:"⚠️ Ce matin : envoyer 3 valises Yamato → Mitsui Garden Hotel Kyoto (¥9,600 · 61€)",w:true}]},
+],notes:[{t:"⚠️ Ce matin : envoyer 3 valises Yamato → Mitsui Garden Hotel Kyoto (¥9,600 · 61€)",w:true},{t:"⚠️ KAMIKOCHI — Réserver bus Nohi OBLIGATOIREMENT la veille (J8) · place limitée",w:true}]},
 
 {n:10,d:"Mer 19/08",v:"Takayama → Kyoto",city:"takayama",type:"normal",title:"Marché matinal · Sanmachi · Funasaka Brewery → Transfert Kyoto",hotel:"Mitsui Garden Hotel Kyoto Station",blocks:[
   {lbl:"🌅 Très tôt matin",items:[
@@ -814,7 +842,11 @@ var DAYS=[
     {h:"12h30",t:"🚂 Hida Takayama → Nagoya (2h30 · ¥6,140/pers)",c:"tr",bgt:12280,gm:"https://www.google.com/maps/dir/Takayama+Station/Nagoya+Station",ap:"https://maps.apple.com/?saddr=Takayama+Station&daddr=Nagoya+Station",tid:"hida"},
     {h:"15h00",t:"🚄 Nozomi Nagoya → Kyoto (35 min · ¥5,910/pers)",c:"tr",bgt:11820,gm:"https://www.google.com/maps/dir/Nagoya+Station/Kyoto+Station",ap:"https://maps.apple.com/?saddr=Nagoya+Station&daddr=Kyoto+Station",tid:"tak_kyo",site:"https://smart-ex.jp/en/index.php"},
     {h:"16h00",t:"Arrivée Kyoto Station · check-in Mitsui Garden Hotel (3 min à pied)",c:"ho",gm:"https://www.google.com/maps/dir/Kyoto+Station/Mitsui+Garden+Hotel+Kyoto+Station",ap:"https://maps.apple.com/?saddr=Kyoto+Station&daddr=Mitsui+Garden+Hotel+Kyoto+Station",site:"https://www.gardenhotels.co.jp/kyoto-station/en/"},
-    {h:"17h00",t:"Onsen sur le toit de l'hôtel · vue Tour de Kyoto · décompression",c:"ho"}
+    {h:"16h30",t:"🚶 Promenade Kamogawa — bord de rivière · hérons · atmosphère zen · premier air de Kyoto",c:"ac",gm:"https://www.google.com/maps/dir/Mitsui+Garden+Hotel+Kyoto+Station/Kamo+River+Kyoto",ap:"https://maps.apple.com/?saddr=Mitsui+Garden+Hotel+Kyoto+Station&daddr=Kamo+River+Kyoto"}
+  ]},
+  {lbl:"🍵 Matcha à l'arrivée à Kyoto",items:[
+    {h:"17h30",t:"🍵 Matcha Gokago — matcha élégant à Kyoto · ambiance raffinée · parfait pour une première dégustation à Kyoto",c:"matcha",bgt:1200,gm:"https://www.google.com/maps/search/Matcha+Gokago+Kyoto",ap:"https://maps.apple.com/?q=Matcha+Gokago+Kyoto"},
+    {h:"",t:"▶ Option : Maccha House Kyoto — matcha soft serve · ambiance moderne · très apprécié",c:"matcha",bgt:800,gm:"https://www.google.com/maps/search/Maccha+House+Kyoto",ap:"https://maps.apple.com/?q=Maccha+House+Kyoto"}
   ]},
   {lbl:"🌙 Première soirée Kyoto",items:[
     {h:"19h00",t:"Promenade Pontocho · ruelles entre Kamogawa et Kawaramachi",c:"ac",gm:"https://www.google.com/maps/dir/Mitsui+Garden+Hotel+Kyoto+Station/Pontocho+alley+Kyoto",ap:"https://maps.apple.com/?saddr=Mitsui+Garden+Hotel+Kyoto+Station&daddr=Pontocho+alley+Kyoto"},
@@ -831,41 +863,53 @@ var DAYS=[
     {h:"09h00",t:"🍵 Marukyu Koyamaen Nishiokawaramachi — LA maison de matcha de Kyoto",c:"matcha",bgt:2000,gm:"https://www.google.com/maps/search/Marukyu+Koyamaen+Nishiokawaramachi+Kyoto",ap:"https://maps.apple.com/?q=Marukyu+Koyamaen+Kyoto",site:"https://www.marukyu-koyamaen.co.jp/en/"}
   ]},
   {lbl:"☀️ Matin — Nishiki + Fabrication baguettes",items:[
-    {h:"09h30",t:"🥢 Atelier fabrication baguettes japonaises (hashi) Nishiki Market · 45-60 min · artisanal",c:"ac",bgt:3000,gm:"https://www.google.com/maps/dir/Marukyu+Koyamaen+Kyoto/Nishiki+Market+Kyoto",ap:"https://maps.apple.com/?saddr=Marukyu+Koyamaen+Kyoto&daddr=Nishiki+Market+Kyoto"},
-    {h:"11h00",t:"Stars'n Cacio Kyoto — brunch européen tendance pour une pause",c:"fo",bgt:1800}
+    {h:"09h30",t:"🥢 Atelier fabrication baguettes japonaises (hashi) Nishiki Market · 45-60 min · artisanal",c:"ac",bgt:3000,res:"Réserver sur voyagin.com ou GetYourGuide · 2-3 jours à l'avance",gm:"https://www.google.com/maps/dir/Marukyu+Koyamaen+Kyoto/Nishiki+Market+Kyoto",ap:"https://maps.apple.com/?saddr=Marukyu+Koyamaen+Kyoto&daddr=Nishiki+Market+Kyoto"},
+    {h:"11h00",t:"Stars'n Cacio Kyoto — brunch européen tendance pour une pause",c:"fo",bgt:1800},
+    {h:"",t:"▶ Option : 🍽 Tendon Makino — tempura royale sur riz · croustillant · excellent rapport qualité-prix · ~¥1,500/pers",c:"fo",bgt:3000,gm:"https://www.google.com/maps/search/Tendon+Makino+Kyoto",ap:"https://maps.apple.com/?q=Tendon+Makino+Kyoto"}
   ]},
   {lbl:"🌇 Après-midi — Kimono + Higashiyama",items:[
-    {h:"13h00",t:"★ Shooting kimono — Yumeyakata Higashiyama OU Wargo ~¥3,000/pers (moins cher)",c:"ac",bgt:15000,gm:"https://www.google.com/maps/dir/Nishiki+Market+Kyoto/Yumeyakata+kimono+Higashiyama",ap:"https://maps.apple.com/?saddr=Nishiki+Market+Kyoto&daddr=Yumeyakata+kimono+Higashiyama",site:"https://www.yumeyakata.com/en/higashiyama/"},
+    {h:"13h00",t:"★ Shooting kimono — Yumeyakata Higashiyama OU Wargo ~¥3,000/pers (moins cher)",c:"ac",bgt:15000,res:"Yumeyakata : yumeyakata.com/en/higashiyama · Wargo : airkyoto.jp · Réserver 2-3 jours avant",gm:"https://www.google.com/maps/dir/Nishiki+Market+Kyoto/Yumeyakata+kimono+Higashiyama",ap:"https://maps.apple.com/?saddr=Nishiki+Market+Kyoto&daddr=Yumeyakata+kimono+Higashiyama",site:"https://www.yumeyakata.com/en/higashiyama/"},
     {h:"15h00",t:"Kiyomizu-dera — vue panoramique · plateforme bois (¥500)",c:"ac",bgt:500,gm:"https://www.google.com/maps/dir/Yumeyakata+Higashiyama/Kiyomizudera+Temple+Kyoto",ap:"https://maps.apple.com/?saddr=Yumeyakata+Higashiyama&daddr=Kiyomizudera+Temple",site:"https://www.kiyomizudera.or.jp/en/"},
-    {h:"17h00",t:"Hotel Seiryu Rooftop Bar · saké · vue temples Kyoto ★",c:"ac",bgt:4000,gm:"https://www.google.com/maps/dir/Kiyomizudera+Temple/The+Hotel+Seiryu+Kyoto",ap:"https://maps.apple.com/?saddr=Kiyomizudera+Temple&daddr=The+Hotel+Seiryu+Kyoto",site:"https://www.hotel-seiryu.jp/en/"}
+    {h:"16h00",t:"🚶 Quartier Sanenzaka (Ninenzaka & Sannenzaka) — ruelles pavées · boutiques artisanales · maisons traditionnelles · très photogénique",c:"ac",gm:"https://www.google.com/maps/dir/Kiyomizudera+Temple/Ninenzaka+Kyoto",ap:"https://maps.apple.com/?saddr=Kiyomizudera+Temple&daddr=Ninenzaka+Kyoto"}
+  ]},
+  {lbl:"🍵 Matcha de fin d'après-midi",items:[
+    {h:"17h00",t:"🍵 M Strand Matcha Kyoto — matcha moderne et photogénique · excellente qualité · parfait après Higashiyama",c:"matcha",bgt:1200,gm:"https://www.google.com/maps/search/M+Strand+matcha+Kyoto",ap:"https://maps.apple.com/?q=M+Strand+matcha+Kyoto"},
+    {h:"",t:"▶ Option : Hotel Seiryu Rooftop Bar · saké · vue temples Kyoto ★",c:"ac",bgt:4000,gm:"https://www.google.com/maps/dir/Kiyomizudera+Temple/The+Hotel+Seiryu+Kyoto",ap:"https://maps.apple.com/?saddr=Kiyomizudera+Temple&daddr=The+Hotel+Seiryu+Kyoto",site:"https://www.hotel-seiryu.jp/en/"}
   ]},
   {lbl:"🌙 Soir",items:[
     {h:"19h30",t:"🍽 Gion Karyo ★ — kaiseki 10 plats · Hanamikoji (¥16,500/pers)",c:"fo",bgt:33000,gm:"https://www.google.com/maps/dir/The+Hotel+Seiryu+Kyoto/Gion+Karyo+Kyoto",ap:"https://maps.apple.com/?saddr=The+Hotel+Seiryu+Kyoto&daddr=Gion+Karyo+Kyoto"}
+  ]},
+  {lbl:"⭐ Matcha optionnel",opt:true,items:[
+    {h:"opt",t:"🍵 Chavatuy Kyoto — salon de thé matcha atypique · dégustation originale · ambiance unique",c:"opt",bgt:1500,gm:"https://www.google.com/maps/search/Chavatuy+Kyoto",ap:"https://maps.apple.com/?q=Chavatuy+Kyoto"}
   ]}
 ],notes:[{t:"Wargo Kimono Rental — ¥3,000/pers avec photos incluses · moins cher que Yumeyakata",w:false}]},
 
-{n:12,d:"Ven 21/08",v:"Kyoto",city:"kyoto",type:"erev",title:"Arashiyama · Marukyu · Cours Samouraï · 🕯 Erev Chabbat",hotel:"Mitsui Garden Hotel Kyoto Station",shab:true,blocks:[
+{n:12,d:"Ven 21/08",v:"Kyoto",city:"kyoto",type:"erev",title:"Arashiyama · % Arabica · Kinkaku-ji · Cours Samouraï · 🕯 Erev Chabbat",hotel:"Mitsui Garden Hotel Kyoto Station",shab:true,blocks:[
   {lbl:"🌅 Très tôt — Bambouseraie",items:[
     {h:"06h00",t:"🚆 JR Sagano → Saga-Arashiyama (17 min · ¥240)",c:"tr",bgt:480,gm:"https://www.google.com/maps/dir/Kyoto+Station/Saga-Arashiyama+Station",ap:"https://maps.apple.com/?saddr=Kyoto+Station&daddr=Saga-Arashiyama+Station",tid:"arashi"},
     {h:"06h20",t:"★ Bambouseraie avant la foule — lumière dorée · silence absolu",c:"ac",gm:"https://www.google.com/maps/dir/Saga-Arashiyama+Station/Arashiyama+Bamboo+Grove",ap:"https://maps.apple.com/?saddr=Saga-Arashiyama+Station&daddr=Arashiyama+Bamboo+Grove"},
     {h:"07h30",t:"Tenryu-ji — jardin UNESCO (¥500)",c:"ac",bgt:500,gm:"https://www.google.com/maps/dir/Arashiyama+Bamboo+Grove/Tenryu-ji+Temple",ap:"https://maps.apple.com/?saddr=Arashiyama+Bamboo+Grove&daddr=Tenryu-ji+Temple",site:"https://www.tenryuji.com/en/"}
   ]},
-  {lbl:"🍵 Matcha Arashiyama",items:[
+  {lbl:"🍵 Matcha + Café Arashiyama",items:[
     {h:"09h00",t:"🍵 Marukyu Koyamaen Arashiyama — matcha fraîchement moulu · acheter à rapporter",c:"matcha",bgt:3000,gm:"https://www.google.com/maps/search/Marukyu+Koyamaen+Arashiyama+Kyoto",ap:"https://maps.apple.com/?q=Marukyu+Koyamaen+Arashiyama",site:"https://www.marukyu-koyamaen.co.jp/en/"},
-    {h:"09h30",t:"Hayakawa Amonoten — épicerie fine · légumes Kyoto · produits locaux",c:"ac",bgt:1500,gm:"https://www.google.com/maps/dir/Marukyu+Koyamaen+Arashiyama/Hayakawa+Amonoten+Arashiyama",ap:"https://maps.apple.com/?saddr=Marukyu+Koyamaen+Arashiyama&daddr=Hayakawa+Amonoten+Arashiyama"}
+    {h:"09h30",t:"☕ % Arabica Arashiyama — LA vue de café iconique du Japon · rivière + bambou · instagrammable",c:"fo",bgt:1000,gm:"https://www.google.com/maps/dir/Marukyu+Koyamaen+Arashiyama/Arabica+Coffee+Arashiyama",ap:"https://maps.apple.com/?saddr=Marukyu+Koyamaen+Arashiyama&daddr=Arabica+Coffee+Arashiyama",site:"https://arabica.coffee/en/"}
   ]},
-  {lbl:"☀️ Midi — Street food bord de rivière",items:[
-    {h:"10h30",t:"🍡 Yudofu + dango bord de rivière · street food Arashiyama",c:"fo",bgt:1200,gm:"https://www.google.com/maps/dir/Hayakawa+Amonoten+Arashiyama/Togetsukyo+Bridge+Arashiyama",ap:"https://maps.apple.com/?saddr=Hayakawa+Amonoten&daddr=Togetsukyo+Bridge+Arashiyama"},
-    {h:"12h00",t:"🚆 JR retour Arashiyama → Kyoto Station (¥240)",c:"tr",bgt:480,gm:"https://www.google.com/maps/dir/Saga-Arashiyama+Station/Kyoto+Station",ap:"https://maps.apple.com/?saddr=Saga-Arashiyama+Station&daddr=Kyoto+Station",tid:"arashi"}
+  {lbl:"☀️ Midi — Street food + Kinkaku-ji",items:[
+    {h:"10h30",t:"🍡 Yudofu + dango bord de rivière · street food Arashiyama · pont Togetsukyo",c:"fo",bgt:1200,gm:"https://www.google.com/maps/dir/Arabica+Coffee+Arashiyama/Togetsukyo+Bridge+Arashiyama",ap:"https://maps.apple.com/?saddr=Arabica+Coffee+Arashiyama&daddr=Togetsukyo+Bridge+Arashiyama"},
+    {h:"11h30",t:"🚆 JR retour Arashiyama → Kyoto (¥240) · direction Kinkaku-ji",c:"tr",bgt:480,gm:"https://www.google.com/maps/dir/Saga-Arashiyama+Station/Kyoto+Station",ap:"https://maps.apple.com/?saddr=Saga-Arashiyama+Station&daddr=Kyoto+Station",tid:"arashi"},
+    {h:"12h00",t:"★ Kinkaku-ji — Le Pavillon d'Or · temple doré UNESCO · l'un des plus beaux du Japon (¥500)",c:"ac",bgt:1000,gm:"https://www.google.com/maps/dir/Kyoto+Station/Kinkakuji+Temple+Kyoto",ap:"https://maps.apple.com/?saddr=Kyoto+Station&daddr=Kinkakuji+Temple+Kyoto",site:"https://www.shokoku-ji.jp/kinkakuji/"}
   ]},
-  {lbl:"🌇 Après-midi — Cours Samouraï",items:[
-    {h:"13h30",t:"⚔️ Samurai Kembu Theater Kyoto — kenjutsu · kimono · 90 min · expérience inoubliable",c:"ac",bgt:8000,gm:"https://www.google.com/maps/dir/Kyoto+Station/Samurai+Kembu+Theater+Kyoto",ap:"https://maps.apple.com/?saddr=Kyoto+Station&daddr=Samurai+Kembu+Theater+Kyoto",site:"https://kembu.com/en/"},
-    {h:"16h30",t:"Repos hôtel · préparation Chabbat",c:"ho"}
+  {lbl:"🌇 Après-midi — Cours Samouraï (14h00)",items:[
+    {h:"14h00",t:"⚔️ Samurai Kembu Theater Kyoto — kenjutsu · kimono · 90 min · expérience inoubliable",c:"ac",bgt:8000,res:"Réserver sur kembu.com · 2-3 semaines à l'avance · session 14h00",gm:"https://www.google.com/maps/dir/Kyoto+Station/Samurai+Kembu+Theater+Kyoto",ap:"https://maps.apple.com/?saddr=Kyoto+Station&daddr=Samurai+Kembu+Theater+Kyoto",site:"https://kembu.com/en/"},
+    {h:"16h00",t:"Repos hôtel · préparation Chabbat",c:"ho"}
+  ]},
+  {lbl:"⭐ Option — KIBUNE (seulement si cours finit 15h30 ou avant)",opt:true,items:[
+    {h:"opt",t:"⛩ Kifune Shrine (Kibune) — montagne · ruisseau · sanctuaire de l'eau · magnifique · 45-50 min aller · revenir AVANT 17h15 pour taxi Chabbat · très serré en timing",c:"opt",bgt:500,gm:"https://www.google.com/maps/dir/Samurai+Kembu+Theater+Kyoto/Kifune+Shrine+Kyoto",ap:"https://maps.apple.com/?saddr=Samurai+Kembu+Theater+Kyoto&daddr=Kifune+Shrine+Kyoto"}
   ]},
   {lbl:"🌙 Erev Chabbat (~18h47)",items:[
     {h:"17h30",t:"🕯 Taxi AVANT ~18h47 → Chabad de Kyoto ✡",c:"tr",bgt:1500,gm:"https://www.google.com/maps/dir/Mitsui+Garden+Hotel+Kyoto+Station/Chabad+Kyoto",ap:"https://maps.apple.com/?saddr=Mitsui+Garden+Hotel+Kyoto+Station&daddr=Chabad+Kyoto",site:"https://www.chabadkyoto.com/"}
   ]}
-],notes:[{t:"⚠️ PARTIR AVANT ~18h47 — vérifier heure exacte hebcal.com",w:true},{t:"⚠️ Yamato bagages ce matin → Centara Grand Osaka (¥7,500 · 47€)",w:true}]},
+],notes:[{t:"⚠️ PARTIR AVANT ~18h47 — vérifier heure exacte hebcal.com",w:true},{t:"⚠️ Yamato bagages ce matin → Centara Grand Osaka (¥7,500 · 47€)",w:true},{t:"⚠️ Kibune SEULEMENT si cours samouraï finit avant 15h30 · très serré avant Chabbat",w:true}]},
 
 {n:13,d:"Sam 22/08",v:"Kyoto",city:"kyoto",type:"shabbat",title:"✡ Chabbat · Repos · Dîner simple post-Havdalah",hotel:"Mitsui Garden Hotel Kyoto Station",blocks:[
   {lbl:"🌅 Matin",items:[
@@ -877,13 +921,15 @@ var DAYS=[
   ]},
   {lbl:"🌇 Après-midi",items:[
     {h:"14h30",t:"🚶 Nishiki Market à pied · flânerie visuelle",c:"ac"},
+    {h:"15h30",t:"★ Marché Flottant de Kyoto — marché pittoresque sur les berges · légumes locaux · artisanat · ambiance unique (vérifier horaires)",c:"ac",gm:"https://www.google.com/maps/search/floating+market+Kyoto",ap:"https://maps.apple.com/?q=floating+market+Kyoto"},
     {h:"17h00",t:"Repos hôtel · lecture · spa · détente",c:"ho"}
   ]},
   {lbl:"🌙 Post-Havdalah (~19h45) — OPTIONS DÎNER",items:[
     {h:"—",t:"✨ Havdalah — vérifier heure exacte sur hebcal.com",c:"free"},
     {h:"",t:"▶ Mumokuteki Café — vegan créatif · ~¥2,500/pers",c:"fo",bgt:5000,gm:"https://www.google.com/maps/dir/Mitsui+Garden+Hotel+Kyoto+Station/Mumokuteki+cafe+vegan+Kyoto",ap:"https://maps.apple.com/?saddr=Mitsui+Garden+Hotel+Kyoto+Station&daddr=Mumokuteki+cafe+vegan+Kyoto"},
     {h:"",t:"▶ Tousuiro Gion — tofu shojin · ~¥4,000/pers",c:"fo",bgt:8000,gm:"https://www.google.com/maps/dir/Mitsui+Garden+Hotel+Kyoto+Station/Tousuiro+Gion+restaurant+Kyoto",ap:"https://maps.apple.com/?saddr=Mitsui+Garden+Hotel+Kyoto+Station&daddr=Tousuiro+Gion+restaurant+Kyoto"},
-    {h:"",t:"▶ Nishiki Warai — izakaya convivial · ~¥3,000/pers",c:"fo",bgt:6000,gm:"https://www.google.com/maps/dir/Mitsui+Garden+Hotel+Kyoto+Station/Nishiki+Warai+Kyoto",ap:"https://maps.apple.com/?saddr=Mitsui+Garden+Hotel+Kyoto+Station&daddr=Nishiki+Warai+Kyoto"}
+    {h:"",t:"▶ Nishiki Warai — izakaya convivial · ~¥3,000/pers",c:"fo",bgt:6000,gm:"https://www.google.com/maps/dir/Mitsui+Garden+Hotel+Kyoto+Station/Nishiki+Warai+Kyoto",ap:"https://maps.apple.com/?saddr=Mitsui+Garden+Hotel+Kyoto+Station&daddr=Nishiki+Warai+Kyoto"},
+    {h:"",t:"▶ Sharif Tesshin — restaurant kasher à Kyoto · cuisine japonaise authentique · à vérifier disponibilité",c:"fo",bgt:8000,gm:"https://www.google.com/maps/search/Sharif+Tesshin+Kyoto",ap:"https://maps.apple.com/?q=Sharif+Tesshin+Kyoto"}
   ]},
   {lbl:"⭐ Option MAIKOYA",opt:true,items:[
     {h:"opt",t:"★★ MAIKOYA Geisha Dinner — 2h30 avec maiko (¥30,000/pers) · réserver 4 sem avant",c:"opt",bgt:60000,site:"https://mai-ko.com/travel/geisha-experience/kyoto-maiko-dinner/"}
@@ -925,7 +971,8 @@ var DAYS=[
     {h:"10h00",t:"🦌 Nara Park — 1 200 cerfs Shika · biscuits ¥200 · prendre le temps de se promener jusqu'à Kasuga",c:"ac",bgt:200,gm:"https://www.google.com/maps/dir/Todaiji+Temple+Nara/Nara+Park",ap:"https://maps.apple.com/?saddr=Todaiji+Temple&daddr=Nara+Park"}
   ]},
   {lbl:"☀️ Midi",items:[
-    {h:"12h00",t:"🍡 Nakatanidou mochi au marteau ❤️ + dorayaki de rue",c:"fo",bgt:1000,gm:"https://www.google.com/maps/search/Nakatanidou+Nara",ap:"https://maps.apple.com/?q=Nakatanidou+Nara"}
+    {h:"12h00",t:"🍡 Nakatanidou mochi au marteau ❤️ + dorayaki de rue",c:"fo",bgt:1000,gm:"https://www.google.com/maps/search/Nakatanidou+Nara",ap:"https://maps.apple.com/?q=Nakatanidou+Nara"},
+    {h:"",t:"▶ Option : 🍜 Kamaiki Nara — nouilles udon maison · bouillon dashi · spécialité locale · ~¥1,200/pers",c:"fo",bgt:2400,gm:"https://www.google.com/maps/search/Kamaiki+Nara",ap:"https://maps.apple.com/?q=Kamaiki+Nara"}
   ]},
   {lbl:"🌇 Après-midi — Kasuga + Retour Osaka",items:[
     {h:"13h00",t:"Kasuga Taisha — 3 000 lanternes de bronze · allées sous les bois · sérénité (¥500)",c:"ac",bgt:500,gm:"https://www.google.com/maps/dir/Nakatanido+mochi+Nara/Kasuga+Grand+Shrine+Nara",ap:"https://maps.apple.com/?saddr=Nakatanido+mochi+Nara&daddr=Kasuga+Grand+Shrine+Nara"},
@@ -1087,10 +1134,14 @@ function toggleTR(btn,id){
   btn.textContent='ℹ️ Masquer';
 }
 
-function renderItem(it){
+function renderItem(it,dayN,bi,ii){
+  var ckid='ic_'+dayN+'_'+bi+'_'+ii;
+  var isDone=false;try{isDone=localStorage.getItem(ckid)==='1';}catch(e){}
   var dc=it.c==='tr'?'#1A5CA8':it.c==='fo'?'#8A5500':it.c==='ho'?'#5A3A8A':it.c==='matcha'?'#2D6A4F':it.c==='opt'?'#C06A00':'#C4900A';
   var hc=it.c==='matcha'?'#2D6A4F':it.c==='opt'?'#C06A00':'#C0192E';
-  var h='<div class="it"><span class="ih" style="color:'+hc+'">'+it.h+'</span><span class="id" style="background:'+dc+'"></span><div class="ib2"><div class="itx">'+it.t+'</div>';
+  var h='<div class="it'+(isDone?' checked':'')+'"><div class="it-chk'+(isDone?' done':'')+'" onclick="toggleItinChk(this,\''+ckid+'\')">'+(isDone?'✓':'')+'</div>';
+  h+='<span class="ih" style="color:'+hc+'">'+it.h+'</span><span class="id" style="background:'+dc+'"></span><div class="ib2"><div class="itx">'+it.t+'</div>';
+  if(it.res)h+='<div class="it-res">📋 '+it.res+'</div>';
   if(it.bgt>0)h+='<span class="ipr">¥'+it.bgt.toLocaleString()+' · '+eur(it.bgt)+'€</span>';
   var btns='';
   if(it.gm)btns+='<a href="'+it.gm+'" target="_blank" class="bg">📍 Google Maps</a>';
@@ -1101,6 +1152,15 @@ function renderItem(it){
   h+='</div></div>';
   return h;
 }
+window.toggleItinChk=function(el,id){
+  var cur=false;try{cur=localStorage.getItem(id)==='1';}catch(e){}
+  var isDone=!cur;
+  try{localStorage.setItem(id,isDone?'1':'0');}catch(e){}
+  el.className='it-chk'+(isDone?' done':'');
+  el.textContent=isDone?'✓':'';
+  var row=el.parentNode;
+  if(isDone)row.classList.add('checked');else row.classList.remove('checked');
+};
 
 function renderDay(d){
   var tp=d.type||'normal';
@@ -1115,12 +1175,12 @@ function renderDay(d){
   h+='<div class="db" id="bd-'+d.n+'">';
   if(d.shab)h+='<div class="ib ib-shab" style="margin:12px 0">🕯 Erev Chabbat — allumage bougies · téléphone éteint · Partir au Chabad AVANT le coucher du soleil</div>';
   if(d.uji)h+='<div class="ib ib-uji" style="margin:12px 0">🍵 Demi-journée Uji — Capitale mondiale du matcha · Byodo-in UNESCO · Horii Shichimeien · Matcha Republic · Matcha Roastery</div>';
-  d.blocks.forEach(function(b){
+  d.blocks.forEach(function(b,bi){
     var lc=b.opt?'#C06A00':b.lbl&&(b.lbl.indexOf('🍵')>=0||b.lbl.indexOf('Matcha')>=0)?'#2D6A4F':'#7A6E60';
     h+='<div class="bl" style="color:'+lc+'">'+b.lbl;
     if(b.opt)h+=' <span class="ob">OPTIONNEL</span>';
     h+='</div>';
-    b.items.forEach(function(it){h+=renderItem(it);});
+    b.items.forEach(function(it,ii){h+=renderItem(it,d.n,bi,ii);});
   });
   if(d.notes&&d.notes.length){
     h+='<div class="notes">';
